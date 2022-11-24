@@ -1,42 +1,52 @@
 import java.util.Scanner;
 
 public class Main {
-    public static Scanner sc = new Scanner(System.in);;
+    public static Scanner sc = new Scanner(System.in);
+    ;
 
     public static void main(String[] args) {
-        
+        taskOne();
     }
 
     public static void taskOne() {
+
         System.out.print("День рождения: ");
-        int day = sc.nextInt();
+        int birthDay = sc.nextInt();
+
         System.out.print("Месяц рождения: ");
-        int month = sc.nextInt();
+        int birthMonth = sc.nextInt();
+
         System.out.print("Год рождения: ");
-        int year = sc.nextInt();
+        int birthYear = sc.nextInt();
+
         int currentDay = 17;
         int currentMonth = 11;
         int currentYear = 2022;
 
-        year = currentYear - year;
-        if (currentMonth < month || (month == currentMonth && day > currentDay)) year -= 1;
+        int daysLeft, monthLeft, yearsLeft;
+
+        yearsLeft = currentYear - birthYear;
+        if (currentMonth < birthMonth || (birthMonth == currentMonth && birthDay < currentDay)) yearsLeft--;
 
         boolean isCurrentDayLower = false;
-        if (currentDay >= day) {
-            day = currentDay - day;
+        if (currentDay >= birthDay) {
+            daysLeft = currentDay - birthDay;
         } else {
-            day = 30 - (day - currentDay);
             isCurrentDayLower = true;
+            daysLeft = 30 - (birthDay - currentDay);
         }
 
-        if (currentMonth >= month) {
-            month = currentMonth - month;
-            if (isCurrentDayLower) month = 12 - month - 1;
+        int subtractionOfMonth = Math.abs(currentMonth - birthMonth);
+        if ((birthMonth == currentMonth && birthDay > currentDay) || birthMonth > currentMonth) {
+            monthLeft = 12 - subtractionOfMonth;
         } else {
-            month = 12 - (month - currentMonth);
+            monthLeft = subtractionOfMonth;
         }
 
-        System.out.println(year + " лет, " + month + " месяцев и " + day + " дней");
+        if (isCurrentDayLower) monthLeft--;
+
+
+        System.out.println(yearsLeft + " лет, " + monthLeft + " месяцев и " + daysLeft + " дней");
 
     }
 
@@ -68,21 +78,28 @@ public class Main {
         for (int i = 1; i < Math.abs(n); i++) {
             result *= x;
         }
-        if(n>0){
+        if (n > 0) {
             System.out.println(result);
         } else {
-            System.out.println((double) 1/result);
+            System.out.println((double) 1 / result);
         }
     }
 
     public static void taskFour() {
         System.out.print("Количество точек: ");
         int dots = sc.nextInt();
+        System.out.print("Радиус окружности: ");
+        int r = sc.nextInt();
         int dotsInCircle = 0;
-        for(int i = 1; i <= dots; i++){
-            System.out.println("X" );
+        for (int i = 1; i <= dots; i++) {
+            System.out.print("X " + i + " точки: ");
+            double x = sc.nextDouble();
+            System.out.print("Y " + i + " точки: ");
+            double y = sc.nextDouble();
+            if (x * x + y * y <= r * r) {
+                dotsInCircle++;
+            }
         }
-
         System.out.println(dotsInCircle + " точек попали в окружность");
     }
 }
