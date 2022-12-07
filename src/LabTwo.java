@@ -24,6 +24,7 @@ public class LabTwo {
         } else {
             System.out.println("Введенное выражение является датой");
         }
+        scan.close();
     }
 
     public void taskTwo() {
@@ -35,6 +36,7 @@ public class LabTwo {
         } else {
             System.out.println("Пароль надежен ");
         }
+        scan.close();
     }
 }
 
