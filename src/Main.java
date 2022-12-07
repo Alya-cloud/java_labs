@@ -45,8 +45,8 @@ public class Main {
 
         if (isCurrentDayLower) monthLeft--;
 
-
         System.out.println(yearsLeft + " лет, " + monthLeft + " месяцев и " + daysLeft + " дней");
+        sc.close();
 
     }
 
@@ -67,6 +67,7 @@ public class Main {
         if (month == 9 || month == 10 || month == 11) {
             System.out.println("Осень");
         }
+        sc.close();
     }
 
     public static void taskThree() {
@@ -83,6 +84,7 @@ public class Main {
         } else {
             System.out.println((double) 1 / result);
         }
+        sc.close();
     }
 
     public static void taskFour() {
@@ -101,5 +103,6 @@ public class Main {
             }
         }
         System.out.println(dotsInCircle + " точек попали в окружность");
+        sc.close();
     }
 }
